@@ -1,0 +1,19 @@
+<% content_for :subtitle do %>New Bill<% end %>
+
+<% form_for Bill.new do |f| %>
+  <table>
+    <tbody>
+      <tr>
+	    <td>Name:</td>
+		<td><%= f.text_field :name %></td>
+	  </tr>
+	  <tr>
+	    <td>Description:</td>
+		<td><%= f.text_field :description %></td>
+	  </tr>
+	</tbody>
+  </table>
+  
+  <br/>
+  <%= f.submit "Create" %>
+<% end %>

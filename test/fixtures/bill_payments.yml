@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bill_item_id: 1
+  bill_participant_id: 1
+  value: 9.99
+
+two:
+  bill_item_id: 1
+  bill_participant_id: 1
+  value: 9.99

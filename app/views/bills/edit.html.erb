@@ -1,0 +1,19 @@
+<% content_for :subtitle do %>Edit bill <%=h @bill.name %><% end %>
+
+<% form_for @bill do |f| %>
+  <table>
+    <tbody>
+	  <tr class="odd">
+	    <td>Name:</td>
+		<td><%= f.text_field :name %></td>
+	  </tr>
+	  <tr class="even">
+	    <td>Description:</td>
+		<td><%= f.text_field :description %></td>
+	  </tr>
+	</tbody>
+  </table>
+	
+  <br/>
+  <%= f.submit "Update" %>
+<% end %>

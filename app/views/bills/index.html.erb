@@ -1,0 +1,37 @@
+<% content_for :subtitle do %>Bills<% end %>
+
+<% content_for :help_sidebar do %>
+  Click on the <%= add_image_tag %> icon to add a new bill.<br/><br/>
+  Click on the <%= edit_image_tag %> icon to edit a Bill's name and Description.<br/><br/>
+  Click on the <%= delete_image_tag %> icon to delete a Bill.<br/><br/>
+  Copy the link in the <%= link_image_tag %> icon to distribute amongst friends.<br/><br/>
+</ul>
+<% end %>
+
+<h3>Hello, and welcome to CuentasClaras.com. Click the <%= add_image_tag %> icon below to add 
+bills. Click on a bill to add participants, items and payments.</h3>
+
+<br/>
+
+<table>
+  <thead>
+    <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+  </thead>
+<tbody>
+  <% for bill in @bills %>
+    <tr class="<%= cycle('odd','even') %>">
+      <td><%= link_to bill.name, bill_bill_items_url(bill) %></td>
+      <td><%=h bill.description %></td>
+	  <td>
+	    <%= link_to edit_image_tag, edit_bill_url(bill) %>
+		<%= link_to delete_image_tag, bill_url(bill), :method => :delete %>
+  	    <%= link_to link_image_tag, permalink_url(bill.permalink) %>
+	  </td>
+    </tr>
+  <% end %>
+  <tr class="<%= cycle('odd','even') %>">
+    <td colspan="3"><%= link_to add_image_tag + "Add New Bill", new_bill_url %></td>
+  </tr>
+</tbody>
+</table>
+<br/>

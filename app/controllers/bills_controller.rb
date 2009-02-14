@@ -1,0 +1,92 @@
+class BillsController < ApplicationController
+  def index
+    # First time this visitor shows up
+    @bills = visitor.bills
+	
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @bills }
+    end
+  end
+  
+  def show
+    @bill = Bill.find(params[:id])
+	
+	respond_to do |format|
+	  format.html { redirect_to(bill_bill_items_url(@bill) ) }
+	  format.xml  { render :xml => @bill }	  
+	end
+  end
+  
+  def create
+	@bill = Bill.new(params[:bill])
+	visitor.bills << @bill
+	
+	if @bill.save
+	  respond_to do |format|
+        format.html { redirect_to(bill_bill_items_url(@bill) ) }
+	    format.xml  { render :xml => @bill }
+      end
+	else
+	  flash[:error] = 'Error creating Bill'
+        format.html { redirect_to(bill_bill_items_url(@bill) ) }
+	    format.xml  { render :xml => @bill.errors, :status => :unprocessable_entity }
+	end
+  end
+
+  def edit
+    @bill = Bill.find(params[:id])
+  end
+
+  def update
+    @bill = Bill.find(params[:id])
+
+    respond_to do |format|
+      if @bill.update_attributes(params[:bill])
+        flash[:notice] = 'Bill was successfully updated.'
+		
+	    format.html { redirect_to( bills_url ) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @bill.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @bill = Bill.find(params[:id])	
+	@bill.destroy
+	
+	respond_to do |format|
+	  format.html { redirect_to( bills_url ) }
+	  format.xml  { head :ok }
+	end
+  end
+  
+  def permalink
+    @bill = Bill.find_by_permalink(params[:permalink])
+ 
+    respond_to do |format|
+      if @bill
+        format.html { redirect_to bill_bill_items_url(@bill) }
+        format.xml  { render :xml => @bill.to_xml }
+	  else
+	    flash[:notice] = 'Cannot find bill from permalink'
+	    format.html { redirect_to bills_url }
+		format.xml  { render :status => :unprocessable_entity } 
+	  end
+    end
+  end
+  
+  def add_visitor
+    @bill = Bill.find(params[:bill_id])
+    visitor.bills << @bill
+	
+    respond_to do |format|
+	  flash[:notice] = 'Succesfully added bill to your bills'
+	  format.html { redirect_to bill_bill_items_url(@bill) }
+	  format.xml  { head :ok }
+	end
+  end
+end

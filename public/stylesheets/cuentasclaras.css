@@ -1,0 +1,17 @@
+.bill_item_th_text {
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.bill_item_th_toolbar {
+  text-align: right;
+  vertical-align: top;
+}
+
+.who_owes_who_cell {
+  text-align: right;
+}
+
+.bill_payment_value_cell {
+  text-align: right;
+}
