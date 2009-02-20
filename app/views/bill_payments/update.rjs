@@ -1,0 +1,2 @@
+page.replace_html :who_owes_who, :partial => 'bill_items/who_owes_who'
+page.replace_html :bill_totals, :partial => 'bill_items/bill_totals'

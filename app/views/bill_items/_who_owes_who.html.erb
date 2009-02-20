@@ -1,0 +1,29 @@
+<% reset_cycle %>
+<% @matrix = @bill.who_owes_who %>
+<table>
+<caption><%= t 'title.who_owes_what' %></caption>
+  <thead>
+    <tr class="<%= cycle('odd','even') %>">
+	  <td></td>
+      <% @bill_participants.each do |p| %>
+	    <th><%=h p.name %></th>
+	  <% end %>
+	</tr>
+  </thead>
+  <tbody>
+    <% @bill_participants.each do |p| %>
+	  <tr class="<%= cycle('odd','even') %>">
+	    <th><%=h p.name %> <%=h conjugate('owe',p.party_size) %></th>
+	    <% @bill_participants.each do |q| %>
+	      <td class="who_owes_who_cell">
+		    <% if p != q %>
+	 	      <%=h number_to_currency( @matrix[ p.id ][ q.id ] ) -%>
+			<% else %>
+			  - 
+			<% end %>
+		  </td>
+	    <% end %>
+	  </tr>
+	<% end %>
+  </tbody>
+</table>
