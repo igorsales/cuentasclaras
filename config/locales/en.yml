@@ -1,0 +1,61 @@
+en:
+  welcome:
+    paragraph: "Hello, and welcome to CuentasClaras.com.
+	            Start by clicking on 'Add new bill' below to add bills. 
+				Click on a bill to add participants, items and payments."
+  help:
+    title: "Need help?"
+    add_bill: "Click on the {{image}} icon to add a new bill."
+    edit_bill: "Click on the {{image}} icon to edit a Bill's name and Description."
+    delete_bill: "Click on the {{image}} icon to delete a Bill."
+    visitor_permalink: "Copy the link in the {{image}} icon to distribute amongst friends."
+
+    add_bill_item: "Add expenses by clicking the {{image}} located at the bottom of the expenses table."
+    add_bill_participant: "Add participants to the expense table by clicking the {{image}} icon located at the 
+                           top-right corner of the expense table."
+    delete_bill_item: "Remove expenses by clicking the {{image}} icon located to the right of the expense row."
+    edit_bill_participant: "Edit the participant's name or the participant's party size by clicking the {{image}} icon 
+                            above the participant's name."
+    delete_bill_participant: "Remove a participant by clicking the {{image}} above the participant's name."
+    edit_bill_properties: "Edit bill's properties by clicking the {{image}} icon on the top-right corner of the expenses
+                           table."
+    edit_bill_payment: "Add, remove and edit expense values, date and values by changing the contents of the cells.
+                        The values are applied when you use the 'tab' key or click outside the cell."
+
+  title:
+    site: "Good Fences Make Good Neighbors"
+    bills: "Bills"
+    bill_items: "Expenses"
+    who_owes_what: "Who owes what?"
+
+  table_hdr:
+    name: "Name"
+    descr: "Description"
+    actions: "Actions"
+    date: "Date"
+    total: "Total"
+    party_size: "Party size"
+
+  action:
+    add_bill: "Add new bill"
+    edit_bill: "Edit bill"
+    add_bill_item: "New expense"
+    add_bill_to_visitors: "Add this bill to your list of bills"
+    add_bill_participant: "New bill participant"
+    edit_bill_participant: "Edit bill participant"
+    
+    create: "Create"
+    update: "Update"
+
+  breadcrumb:
+    bills: "My bills"
+  
+  visitor:
+    permalink:
+      paragraph: "This is your permalink. 
+                  Send it to family or friends you want to share your bills and expenses with!"
+
+  verb:
+    owe:
+      3rd_person_plural: "owe"
+      3rd_person_singular: "owes"

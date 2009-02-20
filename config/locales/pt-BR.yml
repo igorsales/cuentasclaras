@@ -1,0 +1,89 @@
+pt-BR:
+  welcome:
+    paragraph: "Bem-vindo a ContasClaras.com.
+	            Adicione uma nova conta clicando no link 'Adicionar nova conta' abaixo. 
+				Clique em uma conta para adicionar participantes, despesas e pagamentos."
+  help:
+    title: "Ajuda?"
+    add_bill: "Clique no ícone {{image}} para adicionar uma nova fatura."
+    edit_bill: "Clique no ícone {{image}} para editar o nome e a descrição da fatura."
+    delete_bill: "Clique no ícone {{image}} para apagar a respectiva conta."
+    visitor_permalink: "Copie o link do ícone {{image}} e distribua-o com seus amigos."
+
+    add_bill_item: "Adicione despesas clicando o ícone {{image}} localizado na parte inferior da tabela de despesas."
+    add_bill_participant: "Adicione participantes à tabela de despesas clicando no ícone {{image}} localizado na parte 
+                           superior direita da tabela de despesas."
+    delete_bill_item: "Remova despesas clicando no ícone {{image}} localizado à direita da respectiva despesa."
+    edit_bill_participant: "Edite o nome e a quantidade de pessoas de um participante clicando no ícone {{image}}
+                            localizado acima do nome do participante."
+    delete_bill_participant: "Remova um participante clicando o ícone {{image}} localizado acima do nome do participante."
+    edit_bill_properties: "Edite os atributos da conta clicando no ícone {{image}} localizado no canto superior direito da tabela
+                           de despesas."
+    edit_bill_payment: "Adicione, remova e edite pagamentos, datas e descrições editando os campos respectivos.
+                        Uma vez que a tecla 'tab' seja pressionada, ou o usuário clique fora do campo sendo editado,
+                        o item editado será guardado."
+
+  title:
+    site: "Contas Claras"
+    bills: "Contas"
+    bill_items: "Despesas"
+    who_owes_what: "Quem deve o que a quem?"
+
+  table_hdr:
+    name: "Nome"
+    descr: "Descrição"
+    actions: "Acões"
+    date: "Data"
+    total: "Total"
+    party_size: "Número de participantes"
+
+  action:
+    add_bill: "Adicionar nova conta"
+    edit_bill: "Editar conta"
+    add_bill_item: "Adicionar despesa"
+    add_bill_to_visitors: "Adicionar esta conta à sua lista de contas"
+    add_bill_participant: "Novo participante"
+    edit_bill_participant: "Editar participante"
+    
+    create: "Criar"
+    update: "Atualizar"
+
+  breadcrumb:
+    bills: "Minhas contas"
+  
+  visitor:
+    permalink:
+      paragraph: "Este link é seu permalink. 
+                  Envie-o à pessoas de sua familia e/ou amigos com quem queira compartilhar suas despesas!"
+
+  verb:
+    owe:
+      3rd_person_plural: "devem a"
+      3rd_person_singular: "deve a"
+ 
+########################
+#
+#    Locale specific 
+#
+########################
+  number:
+    # Used in number_with_delimiter()
+    # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+    format:
+      # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
+      separator: "." 
+      # Delimets thousands (e.g. 1,000,000 is a million) (always in groups of three)
+      delimiter: "," 
+      # Number of decimals, behind the separator (1 with a precision of 2 gives: 1.00)
+      precision: 2
+ 
+    # Used in number_to_currency()
+    currency:
+      format:
+        # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
+        format: "%u %n" 
+        unit: "$" 
+        # These three are to override number.format and are optional
+        separator: "," 
+        delimiter: "." 
+        precision: 2
