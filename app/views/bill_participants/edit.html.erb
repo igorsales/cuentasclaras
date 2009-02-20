@@ -1,16 +1,15 @@
 <% content_for :subtitle do %>
-Edit Bill Participant
+<%= t 'action.edit_bill_participant' %>
 <% end %>
 
 
 <% form_for [ @bill, @bill_participant ] do |f| %>
-
-<table>
-<tbody>
-  <tr><td>Participant's name:</td><td><%= f.text_field :name %></td></tr>
-  <tr><td>Party Size:</td><td><%= f.select :party_size, party_size_array %></td></tr>
-</tbody>
-</table>
-
-  <%= f.submit "Update" %>
+  <table>
+    <tbody>
+      <tr class="odd"><td><%= t 'table_hdr.name' %>:</td><td><%= f.text_field :name %></td></tr>
+      <tr class="even"><td><%= t 'table_hdr.party_size' %>:</td><td><%= f.select :party_size, party_size_array %></td></tr>
+    </tbody>
+  </table>
+  <br/>
+  <%= f.submit t('action.update') %>
 <% end %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090213153303) do
+ActiveRecord::Schema.define(:version => 20090220140257) do
 
   create_table "bill_items", :force => true do |t|
     t.string   "name"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20090213153303) do
     t.string   "permalink"
   end
 
-  create_table "visitor_bills", :force => true do |t|
+  create_table "visitor_bills", :id => false, :force => true do |t|
     t.integer  "bill_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20090213153303) do
   create_table "visitors", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
+    t.string   "locale"
   end
 
 end

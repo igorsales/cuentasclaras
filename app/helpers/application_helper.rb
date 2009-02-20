@@ -15,4 +15,17 @@ module ApplicationHelper
   def link_image_tag
     image_tag('link.png')
   end
+  
+  def visitor
+    Visitor.find(session[:visitor_id])
+  end
+
+  def locales_array
+    [ 
+      ['English',             'en'],
+      ['Português do Brasil', 'pt-BR'], 
+      ['Español',             'es']
+    ]
+
+  end
 end

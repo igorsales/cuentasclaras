@@ -28,7 +28,7 @@ class BillsController < ApplicationController
 	    format.xml  { render :xml => @bill }
       end
 	else
-	  flash[:error] = 'Error creating Bill'
+	  flash[:error] = t('msg.bill_add_failed')
         format.html { redirect_to(bill_bill_items_url(@bill) ) }
 	    format.xml  { render :xml => @bill.errors, :status => :unprocessable_entity }
 	end
@@ -43,7 +43,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.update_attributes(params[:bill])
-        flash[:notice] = 'Bill was successfully updated.'
+        flash[:notice] = t('msg.bill_update_ok')
 		
 	    format.html { redirect_to( bills_url ) }
         format.xml  { head :ok }
@@ -72,7 +72,7 @@ class BillsController < ApplicationController
         format.html { redirect_to bill_bill_items_url(@bill) }
         format.xml  { render :xml => @bill.to_xml }
 	  else
-	    flash[:notice] = 'Cannot find bill from permalink'
+	    flash[:notice] = t('msg.bill_permalink_not_found')
 	    format.html { redirect_to bills_url }
 		format.xml  { render :status => :unprocessable_entity } 
 	  end
@@ -84,7 +84,7 @@ class BillsController < ApplicationController
     visitor.bills << @bill
 	
     respond_to do |format|
-	  flash[:notice] = 'Succesfully added bill to your bills'
+	  flash[:notice] = t('msg.bill_add_to_visitor_ok')
 	  format.html { redirect_to bill_bill_items_url(@bill) }
 	  format.xml  { head :ok }
 	end

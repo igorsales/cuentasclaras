@@ -15,3 +15,8 @@
 .bill_payment_value_cell {
   text-align: right;
 }
+
+#language {
+  padding: 1px 10px 10px 10px;
+  position: relative;
+}

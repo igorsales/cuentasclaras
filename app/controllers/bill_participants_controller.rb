@@ -44,7 +44,7 @@ class BillParticipantsController < ApplicationController
 
     respond_to do |format|
       if @bill_participant.update_attributes(params[:bill_participant])
-        flash[:notice] = 'Bill participant was successfully updated.'
+        flash[:notice] = t('msg.bill_participant_update_ok')
 		
 	    format.html { redirect_to( bill_bill_items_url(@bill) ) }
         format.xml  { head :ok }

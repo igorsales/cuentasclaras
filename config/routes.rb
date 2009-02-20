@@ -51,4 +51,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.permalink 'bill/:permalink', :controller => 'bills', :action => 'permalink'
   map.connect   'bill/:permalink.:format', :controller => 'bills', :action => 'permalink', :format => nil
+  
+  map.visitor_permalink 'visitor/:permalink', :controller => 'visitors', :action => 'visitor_permalink'
+  map.connect           'visitor/:permalink.:format', :controller => 'visitors', :action => 'visitor_permalink', :format => nil
+  
+  map.locale  'set_locale', :controller => 'visitors', :action => 'set_locale'
+  #map.connect 'set_locale/:locale.:format', :controller => 'visitors', :action => 'set_locale', :format => nil
 end

@@ -20,8 +20,8 @@ pt-BR:
     edit_bill_properties: "Edite os atributos da conta clicando no ícone {{image}} localizado no canto superior direito da tabela
                            de despesas."
     edit_bill_payment: "Adicione, remova e edite pagamentos, datas e descrições editando os campos respectivos.
-                        Uma vez que a tecla 'tab' seja pressionada, ou o usuário clique fora do campo sendo editado,
-                        o item editado será guardado."
+                        Uma vez que a tecla 'enter', ou a tecla 'tab' sejam pressionadas, ou o usuário clique fora do campo sendo editado,
+                        o valor editado será armazenado."
 
   title:
     site: "Contas Claras"
@@ -47,6 +47,14 @@ pt-BR:
     
     create: "Criar"
     update: "Atualizar"
+
+  msg:
+    bill_participant_update_ok: "Participante atualizado com sucesso."
+    bill_add_failed: "Erro ao criar nova conta."
+    bill_update_ok: "Dados da conta atualizada com successo."
+    bill_permalink_not_found: "Permalink de conta inválido."
+    bill_add_to_visitor_ok: "Conta adicionada a sua lista com successo."
+    visitor_permalink_not_found: "Permalink de usuário não encontrado."
 
   breadcrumb:
     bills: "Minhas contas"

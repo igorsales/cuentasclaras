@@ -1,3 +1,8 @@
-* English name: Good fences make good neighbors
-* Localization
 * RSpec testing (perhaps with cucumber?)
+* Translate into spanish
+* Add disclaimer to main page (only allow user to navigate once disclaimer is accepted)
+
+Features:
+* checkboxes to indicate who participates (or doesn't) in the bill
+  :e.g. when a dinner is a gift from the kids to the parents
+  :e.g. when some of the participants weren't present

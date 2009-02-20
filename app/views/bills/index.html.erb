@@ -1,21 +1,24 @@
-<% content_for :subtitle do %>Bills<% end %>
+<% content_for :subtitle do %><%= t 'title.bills' %><% end %>
 
 <% content_for :help_sidebar do %>
-  Click on the <%= add_image_tag %> icon to add a new bill.<br/><br/>
-  Click on the <%= edit_image_tag %> icon to edit a Bill's name and Description.<br/><br/>
-  Click on the <%= delete_image_tag %> icon to delete a Bill.<br/><br/>
-  Copy the link in the <%= link_image_tag %> icon to distribute amongst friends.<br/><br/>
+  <%= t('help.add_bill', :image => add_image_tag ) %><br/><br/>
+  <%= t('help.edit_bill', :image => edit_image_tag ) %><br/><br/>
+  <%= t('help.delete_bill', :image => delete_image_tag ) %><br/><br/>
+  <%= t('help.visitor_permalink', :image => link_image_tag ) %><br/><br/-->
 </ul>
 <% end %>
 
-<h3>Hello, and welcome to CuentasClaras.com. Click the <%= add_image_tag %> icon below to add 
-bills. Click on a bill to add participants, items and payments.</h3>
+<h3><%= t 'welcome.paragraph' %></h3>
 
 <br/>
 
 <table>
   <thead>
-    <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+    <tr>
+	  <th><%= t 'table_hdr.name' %></th>
+	  <th><%= t 'table_hdr.descr' %></th>
+	  <th><%= t 'table_hdr.actions' %></th>
+	</tr>
   </thead>
 <tbody>
   <% for bill in @bills %>
@@ -30,8 +33,10 @@ bills. Click on a bill to add participants, items and payments.</h3>
     </tr>
   <% end %>
   <tr class="<%= cycle('odd','even') %>">
-    <td colspan="3"><%= link_to add_image_tag + "Add New Bill", new_bill_url %></td>
+    <td colspan="3"><%= link_to add_image_tag + t('action.add_bill'), new_bill_url %></td>
   </tr>
 </tbody>
 </table>
 <br/>
+<%= link_to link_image_tag, visitor_permalink_url(visitor.permalink) %>
+<%= t 'visitor.permalink.paragraph' %>

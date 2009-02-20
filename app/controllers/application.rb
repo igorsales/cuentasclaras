@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  before_filter :set_user_language
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -30,5 +31,33 @@ class ApplicationController < ActionController::Base
 	end
 	
 	@visitor
+  end
+  
+  def set_user_language
+    @visitor = visitor
+    if @visitor.locale.nil?
+      I18n.locale = 'en'
+    else
+      I18n.locale = @visitor.locale
+    end
+  end
+  
+  def currency_to_float(value)
+    if /([0-9,\.]+)/.match(value)
+      value = $1
+    end
+    
+    separator = t('number.currency.format.separator')
+    delimiter = t('number.currency.format.delimiter')
+    
+    delimiter = "\\." if delimiter == '.'
+    separator = "\\." if separator == '.'
+
+    value.gsub!(/#{delimiter}/,'')
+    if separator != '.'
+      value.gsub!(/#{separator}/,'.')
+    end
+    
+    value.to_f
   end
 end

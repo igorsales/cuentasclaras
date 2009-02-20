@@ -20,7 +20,8 @@ en:
     edit_bill_properties: "Edit bill's properties by clicking the {{image}} icon on the top-right corner of the expenses
                            table."
     edit_bill_payment: "Add, remove and edit expense values, date and values by changing the contents of the cells.
-                        The values are applied when you use the 'tab' key or click outside the cell."
+                        The values are applied when you press the 'enter' key, press the 'tab' key,
+                        or click outside the cell."
 
   title:
     site: "Good Fences Make Good Neighbors"
@@ -46,6 +47,14 @@ en:
     
     create: "Create"
     update: "Update"
+    
+  msg:
+    bill_participant_update_ok: "Bill participant was successfully updated."
+    bill_add_failed: "Error creating Bill."
+    bill_update_ok: "Bill updated successfully."
+    bill_permalink_not_found: "Cannot find bill from permalink."
+    bill_add_to_visitor_ok: "Succesfully added bill to your bills."
+    visitor_permalink_not_found: "Cannot find permalink."
 
   breadcrumb:
     bills: "My bills"

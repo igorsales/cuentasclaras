@@ -1,27 +1,23 @@
 <% content_for :subtitle do %>
-Bill Items
+<%= t 'title.bill_items' %>
 <% end %>
 
 <% content_for :help_sidebar do %>
-  Add expenses by clicking the <%= add_image_tag %> located at the bottom of the expenses table<br/><br/>
-  Add participants to the expense table by clicking the <%= add_image_tag %> icon located at the 
-  top-right corner of the expense table.<br/><br/>
-  Remove expenses by clicking the <%= delete_image_tag %> icon located to the right of the expense row.<br/><br/>
-  Edit the participant's name or the participant's party size by clicking the <%= edit_image_tag %> icon 
-  above the participant's name.<br/><br/>
-  Remove a participant by clicking the <%= delete_image_tag %> above the participant's name.<br/><br/>
-  Edit bill's properties by clicking the <%= edit_image_tag %> icon on the top-right corner of the expenses
-  table.<br/><br/>
-  Add, remove and edit expense values, date and values by changing the contents of the cells.
-  The values are applied when you use the "tab" key or click outside the cell.<br/><br/>
+  <%= t 'help.add_bill_item', :image => add_image_tag %><br/><br/>
+  <%= t 'help.add_bill_participant', :image => add_image_tag %><br/><br/>
+  <%= t 'help.delete_bill_item', :image => delete_image_tag %><br/><br/>
+  <%= t 'help.edit_bill_participant', :image => edit_image_tag %><br/><br/>
+  <%= t 'help.delete_bill_participant', :image => delete_image_tag %><br/><br/>
+  <%= t 'help.edit_bill_properties', :image => edit_image_tag %><br/><br/>
+  <%= t 'help.edit_bill_payment' %><br/><br/>
 <% end %>
 
 <table>
-  <caption><%=h @bill.name %></caption>
+  <caption><%= link_to link_image_tag, permalink_url(@bill.permalink) %> <%=h @bill.name %></caption>
   <thead>
     <tr>
-	  <th class="bill_item_th_text" rowspan="2">Date</th>
-	  <th class="bill_item_th_text" rowspan="2">Description</th>
+	  <th class="bill_item_th_text" rowspan="2"><%= t 'table_hdr.date' %></th>
+	  <th class="bill_item_th_text" rowspan="2"><%= t 'table_hdr.descr' %></th>
 	  <% @bill_participants.each do |participant| %>
 	    <th class="bill_item_th_toolbar">
 		  <%= link_to edit_image_tag, edit_bill_bill_participant_url(@bill, participant) %>
@@ -46,25 +42,23 @@ Bill Items
   <tbody>
 	<% for item in @bill_items do %>
 	  <tr class="<%= cycle('odd','even') %>">
-    	<% remote_form_for [@bill, item] do |f| %>
-	      <td><%= f.text_field :date, :size => 10, :onblur => 'this.form.submit();' %></td>
-		  <td><%= f.text_field :name, :size => 15, :onblur => 'this.form.submit();' %></td>
-		<% end %>
-	    <% for participant in @bill_participants do %>
-		  <% form_remote_tag :url => bill_payment_url(item.id, participant.id) do
-		       bill_payment = BillPayment.find(:first, :conditions => { :bill_item_id => item.id, :bill_participant_id => participant.id } ) 
-			   if bill_payment 
-			     value = bill_payment.value
-			   else
-			     value = ''
-			   end
-		  %>
-			<td class="bill_payment_value_cell">
-			  <%= text_field_tag :value, number_to_currency(value, :unit=>''), :size => 7, :onblur => 'this.form.submit();', :class => 'bill_payment_value_cell' %>
-			  <%= hidden_field_tag :bill_participant_id, participant.id %>
-			  <%= hidden_field_tag :bill_item_id, item.id %>
-			</td>
+        <td>
+    	  <% remote_form_for [@bill, item] do |f| %>
+            <%= calendar_date_select_tag 'bill_item[date]', item.date, :hidden => false, :onchange => 'this.form.submit();', :size => 10 %>
+          <% end %>
+        </td>
+        <td>
+    	  <% remote_form_for [@bill, item] do |f| %>
+            <%= f.text_field :name, :size => 15, :onblur => 'this.form.onsubmit();' %>
 		  <% end %>
+        </td>
+	    <% for participant in @bill_participants do %>
+          <td class="bill_payment_value_cell">
+		    <% form_remote_tag :url => bill_payment_url(item.id, participant.id), :html => { :id => bill_item_payment_id(item,participant) } do %>
+		      <%  value = value_of_bill_item_by_participant(item, participant) %>
+			  <%= text_field_tag :value, number_to_currency(value, :unit=>''), :size => 7, :class => 'bill_payment_value_cell', :onblur => 'this.form.onsubmit();' %>
+		    <% end %>
+  		  </td>
 		<% end %>
 		<td>
 		  <%= link_to delete_image_tag, bill_bill_item_url(@bill, item), :method => :delete, :controller => 'bill_items' %>
@@ -73,55 +67,23 @@ Bill Items
 	<% end %>
 	<tr class="<%= cycle('odd','even') %>">
 	  <td colspan="<%= 3+@bill_participants.size %>">
-	    <%= link_to add_image_tag + 'Add New Bill Item', new_bill_bill_item_url(@bill) %>
+	    <%= link_to add_image_tag + t('action.add_bill_item'), new_bill_bill_item_url(@bill) %>
 	  </td>
 	</tr>
-	<tr class="<%= cycle('odd','even') %>">
-	  <td><%=h Time.zone.now.to_date %></td>
-	  <td>Total</td>
-	  <% @bill_participants.each do |participant| %>
-	    <td class="who_owes_who_cell"><%=h number_to_currency(@bill.total_paid_by_bill_participant(participant)) %></td>
-	  <% end %>
-	  <td></td>
+	<tr class="<%= cycle('odd','even') %>" id="bill_totals">
+      <%= render :partial => 'bill_items/bill_totals' %>
 	</tr>
   </tbody>
 </table>
 
 <br/>
 
-<% reset_cycle %>
-<% @matrix = @bill.who_owes_who %>
-<table>
-<caption>Who owes what?</caption>
-  <thead>
-    <tr class="<%= cycle('odd','even') %>">
-	  <td></td>
-      <% @bill_participants.each do |p| %>
-	    <th><%=h p.name %></th>
-	  <% end %>
-	</tr>
-  </thead>
-  <tbody>
-    <% @bill_participants.each do |p| %>
-	  <tr class="<%= cycle('odd','even') %>">
-	    <th><%=h p.name %> <%=h conjugate('owe',p.party_size) %></th>
-	    <% @bill_participants.each do |q| %>
-	      <td class="who_owes_who_cell">
-		    <% if p != q %>
-	 	      <%=h number_to_currency( @matrix[ p.id ][ q.id ] ) %>
-			<% else %>
-			  - 
-			<% end %>
-		  </td>
-	    <% end %>
-	  </tr>
-	<% end %>
-</tbody>
-</table>
+<div id="who_owes_who">
+  <%= render :partial => 'bill_items/who_owes_who' %>
+</div>
 
 <br/>
 
 <% if @should_ask_to_add_bill_to_current_visitors_list %>
-  Note: This bill is currently not in your list. If you'd like to add it, please click 
-  <%= link_to 'here', bill_add_visitor_url(@bill) %>
+  <%= link_to add_image_tag + t( 'action.add_bill_to_visitors' ), bill_add_visitor_url(@bill) %>
 <% end %>

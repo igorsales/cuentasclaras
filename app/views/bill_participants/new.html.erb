@@ -1,5 +1,5 @@
 <% content_for :subtitle do %>
-New Bill Participant
+<%= t 'action.add_bill_participant' %>
 <% end %>
 
 
@@ -7,10 +7,10 @@ New Bill Participant
 
   <table>
     <tbody>
-      <tr><td>Participant's name:</td><td><%= f.text_field :name %></td></tr>
-      <tr><td>Party Size:</td><td><%= f.select :party_size, party_size_array %></td></tr>
+      <tr class="odd"><td><%= t 'table_hdr.name' %>:</td><td><%= f.text_field :name %></td></tr>
+      <tr class="even"><td><%= t 'table_hdr.party_size' %>:</td><td><%= f.select :party_size, party_size_array %></td></tr>
     </tbody>
   </table>
   <br/>
-  <%= f.submit "Create" %>
+  <%= f.submit t 'action.create' %>
 <% end %>
