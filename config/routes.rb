@@ -56,5 +56,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect           'visitor/:permalink.:format', :controller => 'visitors', :action => 'visitor_permalink', :format => nil
   
   map.locale  'set_locale', :controller => 'visitors', :action => 'set_locale'
-  #map.connect 'set_locale/:locale.:format', :controller => 'visitors', :action => 'set_locale', :format => nil
+  
+  map.visitor_disclaimer 'visitor/:id/disclaimer', :controller => 'visitors', :action => 'disclaimer'
+  map.visitor_accept_disclaimer 'visitor/:id/accept_disclaimer', :controller => 'visitors', :action => 'accept_disclaimer'
 end

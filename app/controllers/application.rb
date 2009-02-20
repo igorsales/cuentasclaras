@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   before_filter :set_user_language
+  before_filter :check_disclaimer_accept
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -59,5 +60,19 @@ class ApplicationController < ActionController::Base
     end
     
     value.to_f
+  end
+  
+  def check_disclaimer_accept
+    @visitor = visitor
+    if params[:controller] != 'visitors' and params[:action] != 'disclaimer' and
+       !@visitor.accept_disclaimer
+
+      session[:user_was_going_to] = request.request_uri
+      if session[:user_was_going_to] == visitor_disclaimer_url(@visitor)
+        session[:user_was_going_to] = bills_url
+      end
+
+      redirect_to visitor_disclaimer_url(@visitor)
+    end
   end
 end

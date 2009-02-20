@@ -28,6 +28,8 @@ pt-BR:
     bills: "Contas"
     bill_items: "Despesas"
     who_owes_what: "Quem deve o que a quem?"
+    disclaimer: "Isenção de Responsabilidade"
+    terms_and_conditions: "Termos e Condições de uso"
 
   table_hdr:
     name: "Nome"
@@ -47,6 +49,9 @@ pt-BR:
     
     create: "Criar"
     update: "Atualizar"
+    accept: "Aceitar"
+
+    read_disclaimer: "Ler Isenção de Responsabilidade"
 
   msg:
     bill_participant_update_ok: "Participante atualizado com sucesso."

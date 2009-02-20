@@ -28,6 +28,8 @@ en:
     bills: "Bills"
     bill_items: "Expenses"
     who_owes_what: "Who owes what?"
+    disclaimer: "Disclaimer"
+    terms_and_conditions: "Terms and Conditions"
 
   table_hdr:
     name: "Name"
@@ -44,9 +46,12 @@ en:
     add_bill_to_visitors: "Add this bill to your list of bills"
     add_bill_participant: "New bill participant"
     edit_bill_participant: "Edit bill participant"
-    
+
     create: "Create"
     update: "Update"
+    accept: "Accept"
+
+    read_disclaimer: "Read disclaimer"
     
   msg:
     bill_participant_update_ok: "Bill participant was successfully updated."

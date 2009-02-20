@@ -1,6 +1,8 @@
 * RSpec testing (perhaps with cucumber?)
 * Translate into spanish
-* Add disclaimer to main page (only allow user to navigate once disclaimer is accepted)
+* Add spanish disclaimer
+* Increase english disclaimer
+* Translate disclaimer into portuguese and spanish
 
 Features:
 * checkboxes to indicate who participates (or doesn't) in the bill

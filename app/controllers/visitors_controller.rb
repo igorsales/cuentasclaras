@@ -22,4 +22,31 @@ class VisitorsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def disclaimer
+    @visitor = visitor
+    
+    @disclaimer = File.read( "#{RAILS_ROOT}/public/disclaimer/disclaimer.#{I18n.locale}.txt" )
+
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  def accept_disclaimer
+    if visitor.update_attributes(:accept_disclaimer => true)
+    
+      if session[:user_was_going_to].nil?
+        session[:user_was_going_to] = bills_url
+      end
+
+      respond_to do |format|
+        format.html { redirect_to session[:user_was_going_to]; session[:user_was_going_to] = nil }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to visitor_disclaimer_url(visitor) }
+      end
+    end
+  end
 end

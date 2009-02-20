@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090220140257) do
+ActiveRecord::Schema.define(:version => 20090220151449) do
 
   create_table "bill_items", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20090220140257) do
     t.datetime "updated_at"
     t.string   "permalink"
     t.string   "locale"
+    t.boolean  "accept_disclaimer"
   end
 
 end

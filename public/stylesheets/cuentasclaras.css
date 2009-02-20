@@ -20,3 +20,16 @@
   padding: 1px 10px 10px 10px;
   position: relative;
 }
+
+#disclaimer_link {
+  padding: 1px 10px 10px 10px;
+  font-size: 6pt;
+}
+
+#disclaimer_link a:link, #disclaimer_link a:visited {
+  color: #7c6a4f;
+}
+
+#disclaimer_link a:hover, #disclaimer_link a:active {
+  color: #927f61;
+}
