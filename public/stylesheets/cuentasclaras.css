@@ -19,11 +19,13 @@
 #language {
   padding: 1px 10px 10px 10px;
   position: relative;
+  text-align: center;
 }
 
 #disclaimer_link {
   padding: 1px 10px 10px 10px;
   font-size: 6pt;
+  text-align: center;
 }
 
 #disclaimer_link a:link, #disclaimer_link a:visited {

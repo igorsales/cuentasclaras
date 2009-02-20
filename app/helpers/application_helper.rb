@@ -28,4 +28,10 @@ module ApplicationHelper
     ]
 
   end
+  
+  def my_google_ad(format)
+    if RAILS_ENV == 'production'
+      google_ad(format)
+    end
+  end
 end
