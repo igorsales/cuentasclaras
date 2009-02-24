@@ -38,6 +38,7 @@ en:
     date: "Date"
     total: "Total"
     party_size: "Party size"
+    exempt: "Exempt?"
 
   action:
     add_bill: "Add new bill"

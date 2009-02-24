@@ -3,6 +3,7 @@
 * Add spanish disclaimer
 * Proof english disclaimer
 * Translate english disclaimer into portuguese and spanish
+* Add validation to model for exempt cases with value 0, and not exempt value > 0
 
 Features:
 * checkboxes to indicate who participates (or doesn't) in the bill

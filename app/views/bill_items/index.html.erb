@@ -56,7 +56,9 @@
           <td class="bill_payment_value_cell">
 		    <% form_remote_tag :url => bill_payment_url(item.id, participant.id), :html => { :id => bill_item_payment_id(item,participant) } do %>
 		      <%  value = value_of_bill_item_by_participant(item, participant) %>
-			  <%= text_field_tag :value, number_to_currency(value, :unit=>''), :size => 7, :class => 'bill_payment_value_cell', :onblur => 'this.form.onsubmit();' %>
+			  <%= text_field_tag :value, number_to_currency(value, :unit=>''), :size => 7, :class => 'bill_payment_value_cell', :onblur => 'this.form.onsubmit();' %><br/>
+              <%= check_box_tag  :exempt, "1", is_participant_exempt_of_bill_item(participant,item), :onchange => 'this.form.onsubmit();' %> <%= t('table_hdr.exempt') %>
+              <%= hidden_field_tag :exempt, "0" %>
 		    <% end %>
   		  </td>
 		<% end %>

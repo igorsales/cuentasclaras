@@ -10,9 +10,23 @@ module BillItemsHelper
   def value_of_bill_item_by_participant(bill_item, bill_participant)
     bill_payment = BillPayment.find(:first, :conditions => { :bill_item_id => bill_item.id, :bill_participant_id => bill_participant.id } )
     if bill_payment 
-      bill_payment.value
+      if bill_payment.value > 0
+        bill_payment.value
+      else
+        ''
+      end
     else
       ''
+    end
+  end
+  
+  def is_participant_exempt_of_bill_item(bill_participant, bill_item)
+    bill_payment = BillPayment.find(:first, :conditions => { :bill_item_id => bill_item.id, :bill_participant_id => bill_participant.id } )
+
+    if defined?(bill_payment) and defined?(bill_payment.exempt)
+      bill_payment.exempt
+    else
+      false
     end
   end
   

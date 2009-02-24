@@ -38,6 +38,7 @@ pt-BR:
     date: "Data"
     total: "Total"
     party_size: "Número de participantes"
+    exempt: "Isento?"
 
   action:
     add_bill: "Adicionar nova conta"

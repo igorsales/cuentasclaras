@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090220151449) do
+ActiveRecord::Schema.define(:version => 20090221190459) do
 
   create_table "bill_items", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20090220151449) do
     t.integer  "bill_item_id"
     t.integer  "bill_participant_id"
     t.decimal  "value"
+    t.boolean  "exempt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

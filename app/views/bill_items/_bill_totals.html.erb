@@ -1,6 +1,6 @@
 <td><%=h Time.zone.now.to_date %></td>
 <td><%= t 'table_hdr.total' %></td>
 <% @bill_participants.each do |participant| %>
-  <td class="who_owes_who_cell"><%=h number_to_currency(@bill.total_paid_by_bill_participant(participant)) %></td>
+  <td class="who_owes_who_cell"><%=h number_to_currency(participant.bill_payments.sum(:value)) %></td>
 <% end %>
 <td></td>

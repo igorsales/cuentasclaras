@@ -1,7 +1,7 @@
 config:
   ad_client: "pub-5044505066435851"
   format: leader_board
-  type: ad
+  type: link
   image: true
   text: true
   colors:

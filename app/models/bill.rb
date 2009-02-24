@@ -8,37 +8,60 @@ class Bill < ActiveRecord::Base
   validates_presence_of :name
   
   def total_paid_by_bill_participant(participant)
-    BillPayment.sum( :value, :conditions => 
-	  { :bill_participant_id => participant.id, :bill_item_id => bill_items } )
+    #BillPayment.sum( :value, :conditions => 
+  	#  { :bill_participant_id => participant.id, :bill_item_id => bill_items } )
+    participant.bill_payments.sum( :value )
   end
   
   def who_owes_who_initial_matrix
-    matrix = {}
-	paid_per_participant = Array.new
-    people_cnt = bill_participants.sum(:party_size)
-	
-	bill_participants.each do |q|
-	  owed_per_participant = total_paid_by_bill_participant(q) / people_cnt
-	  paid_per_participant << { :value => owed_per_participant, :obj => q }
+    matrix               = {}
+    paid_per_participant = []
 
-	  # Fill in the matrix
-	  bill_participants.each do |p|
-	    if !matrix[ p.id ]
-		  matrix[ p.id ] = {}
-		end
-		
-	    if p != q 
-	      matrix[ p.id ][ q.id ] = owed_per_participant * p.party_size;
-		else
-		  matrix[ p.id ][ q.id ] = 0.0
-		end
+    # Initialize the matrix
+    bill_participants.each do |p|
+	  paid_per_participant << { :value => p.bill_payments.sum(:value), :obj => p }
+      matrix[ p.id ] = {}
+      bill_participants.each do |q|
+        matrix[ p.id ][ q.id ] = 0.0
 	  end
-	end
+    end
+
+    nbr_participants = bill_participants.sum( :party_size )
+    bill_items.each do |item|
+      # who are exempt of paying this item?
+      exempt     = []
+      nbr_exempt = 0
+      item.bill_payments.each do |payment|
+        if payment.exempt
+          exempt << payment.bill_participant
+          nbr_exempt += payment.bill_participant.party_size
+        end
+      end
+      
+      # If all are exempt, move on to next bill item. (Nobody pays anything)
+      if nbr_exempt < nbr_participants
+        nbr_payers  = nbr_participants - nbr_exempt
+        
+        # For each payment on this item
+        item.bill_payments.each do |payment|
+          per_payer = payment.value / nbr_payers
+          payee     = payment.bill_participant
+          
+          # For each participant
+          bill_participants.each do |payer|
+            if payer != payee and not exempt.include?(payer)
+              # Payer owes payee
+              matrix[ payer.id ][ payee.id ] += per_payer
+            end
+          end
+        end
+      end
+    end
 	
-	sorted_bill_participants = paid_per_participant.sort { |a,b| a[:value] <=> b[:value] }
+	paid_per_participant = paid_per_participant.sort { |a,b| a[:value] <=> b[:value] }
 	
 	@sorted_bill_participants = []
-	sorted_bill_participants.each do |e|
+	paid_per_participant.each do |e|
 	  @sorted_bill_participants << e[ :obj ]
 	end
 	
