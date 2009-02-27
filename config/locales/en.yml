@@ -51,6 +51,7 @@ en:
     create: "Create"
     update: "Update"
     accept: "Accept"
+    logout: "Log out"
 
     read_disclaimer: "Read disclaimer"
     

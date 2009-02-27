@@ -51,6 +51,7 @@ pt-BR:
     create: "Criar"
     update: "Atualizar"
     accept: "Aceitar"
+    logout: "Sair"
 
     read_disclaimer: "Ler Isenção de Responsabilidade"
 

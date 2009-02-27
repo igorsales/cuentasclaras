@@ -18,17 +18,34 @@ class ApplicationController < ActionController::Base
   layout 'main'
   
   def visitor
-    if session[:visitor_id].nil?
-	  @visitor = Visitor.new
-	  @visitor.save
-	  session[:visitor_id] = @visitor.id
-	else
+    # Find the visitor from the session id
+    if not session[:visitor_id].nil?
 	  @visitor = Visitor.find(session[:visitor_id])
 	  if @visitor.nil?
 	    @visitor = Visitor.new
 	    @visitor.save
   	    session[:visitor_id] = @visitor.id
 	  end
+    else
+      # Well, no session, so did we store a proper visitor cookie?
+      if cookies[:visitor_permalink].nil?
+        create_new_visitor = true
+      else
+        @visitor = Visitor.find(:first, :conditions => { :permalink => cookies[:visitor_permalink] } )
+        if( @visitor.nil? )
+          create_new_visitor = true
+        else
+          create_new_visitor = false
+          session[:visitor_id] = @visitor.id
+        end
+      end
+      
+      if create_new_visitor
+  	    @visitor = Visitor.new
+	    @visitor.save
+	    session[:visitor_id] = @visitor.id
+        cookies[:visitor_permalink] = { :value => @visitor.permalink, :expires => 1.year.from_now }
+      end
 	end
 	
 	@visitor
@@ -37,7 +54,14 @@ class ApplicationController < ActionController::Base
   def set_user_language
     @visitor = visitor
     if @visitor.locale.nil?
-      I18n.locale = 'en'
+      host = request.host
+      if /\.(ar|es)$/.match(host)
+        I18n.locale = 'es'
+      elsif /\.(br)$/.match(host)
+        I18n.locale = 'pt-BR'
+      else
+        I18n.locale = 'en'
+      end
     else
       I18n.locale = @visitor.locale
     end
