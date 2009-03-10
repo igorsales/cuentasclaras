@@ -54,6 +54,9 @@ pt-BR:
     logout: "Sair"
 
     read_disclaimer: "Ler Isenção de Responsabilidade"
+    
+  page:
+    about: "Sobre este site"
 
   msg:
     bill_participant_update_ok: "Participante atualizado com sucesso."

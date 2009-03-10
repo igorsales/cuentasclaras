@@ -54,6 +54,9 @@ en:
     logout: "Log out"
 
     read_disclaimer: "Read disclaimer"
+
+  page:
+    about: "About this site"
     
   msg:
     bill_participant_update_ok: "Bill participant was successfully updated."

@@ -99,4 +99,20 @@ class ApplicationController < ActionController::Base
       redirect_to visitor_disclaimer_url(@visitor)
     end
   end
+  
+  def logout
+    session[:session_was_going_to] = nil
+    session[:visitor_id]           = nil
+    cookies[:visitor_permalink]    = nil
+    
+    respond_to do |format|
+      format.html { redirect_to 'http://www.google.com' }
+    end
+  end
+  
+  def about
+    respond_to do |format|
+      format.html
+    end
+  end
 end

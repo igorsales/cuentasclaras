@@ -59,4 +59,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.visitor_disclaimer 'visitor/:id/disclaimer', :controller => 'visitors', :action => 'disclaimer'
   map.visitor_accept_disclaimer 'visitor/:id/accept_disclaimer', :controller => 'visitors', :action => 'accept_disclaimer'
+  
+  map.logout  'logout', :controller => 'application', :action => 'logout'
+  map.connect 'logout', :controller => 'application', :action => 'logout'
+  
+  map.about   'about', :controller => 'application', :action => 'about'
+  map.connect 'about', :controller => 'application', :action => 'about'
 end
