@@ -45,9 +45,6 @@
                 <div id="sidebar">
                         <%= yield :help_sidebar %> <br />
                 </div><!-- End sidebar content -->
-                <div class="sidebar_google_ads">
-                        <%= my_google_ad :wide_skyscaper %>
-                </div>
                 <div id="language">
                         <%= render :partial => 'shared/language' %>
                 </div>
@@ -58,7 +55,6 @@
 
         <div id="contentContainer"><!-- Start main content wrapper -->
                 <div id="content"><!-- Start content -->
-                        <%= my_google_ad :banner %>
                         <p style="color: green"><%= flash[:notice] %></p>
 						<%= yield  %>
                         <br/>

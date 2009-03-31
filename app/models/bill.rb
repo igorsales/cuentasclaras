@@ -10,7 +10,6 @@ class Bill < ActiveRecord::Base
   def total_paid_by_bill_participant(participant)
     #BillPayment.sum( :value, :conditions => 
   	#  { :bill_participant_id => participant.id, :bill_item_id => bill_items } )
-    participant.bill_payments.sum( :value )
   end
   
   def who_owes_who_initial_matrix

@@ -55,9 +55,9 @@ class ApplicationController < ActionController::Base
     @visitor = visitor
     if @visitor.locale.nil?
       host = request.host
-      if /\.(ar|es)$/.match(host)
+      if /\.(ar|es)$/.match(host) or /cuentasclaras\./.match(host)
         I18n.locale = 'es'
-      elsif /\.(br)$/.match(host)
+      elsif /\.(br)$/.match(host) or /contasclaras\./.match(host)
         I18n.locale = 'pt-BR'
       else
         I18n.locale = 'en'

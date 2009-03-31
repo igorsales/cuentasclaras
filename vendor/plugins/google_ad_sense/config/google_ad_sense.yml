@@ -1,5 +1,5 @@
 config:
-  ad_client: "pub-5044505066435851"
+  ad_client: "pub-3800269144053976"
   format: leader_board
   type: ad
   image: true
