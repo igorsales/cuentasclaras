@@ -1,22 +1,9 @@
-* THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
-* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-* ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
-* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-* OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-* OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-* SUCH DAMAGE.
+This site suggests how expenses should be divided. We (the site 
+owners/makers/employees) are not responsible if you (the user 
+and your friends and family) win or lose money.
 
-In a nutshell:
-* If you feel you're paying more than your fair share, lose money: it's your problem. 
-* The calculations we make are very accurate, but we're not responsible for inaccuracies 
-  with your money, or for any other consequence or damage you may incur by using the numbers
-  in this website.
+By clicking "Accept" you are acknowledging you accept the terms
+and conditions of this software.
 
-By clicking "Accept" you are acknowledging you accept the terms and conditions
-of this software.
-
-If you don't wish to accept these terms and conditions, please close the browser window.
+If you don't wish to accept these terms and conditions, please
+close the browser window.
