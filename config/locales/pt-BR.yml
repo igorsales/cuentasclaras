@@ -52,11 +52,13 @@ pt-BR:
     update: "Atualizar"
     accept: "Aceitar"
     logout: "Sair"
+    contact_us: "Entre em contato"
 
     read_disclaimer: "Ler Isenção de Responsabilidade"
     
   page:
     about: "Sobre este site"
+    want_to_donate: "Se gostou deste site e gostaria de fazer uma doação..."
 
   msg:
     bill_participant_update_ok: "Participante atualizado com sucesso."

@@ -57,12 +57,15 @@ ActionController::Routing::Routes.draw do |map|
   
   map.locale  'set_locale', :controller => 'visitors', :action => 'set_locale'
   
-  map.visitor_disclaimer 'visitor/:id/disclaimer', :controller => 'visitors', :action => 'disclaimer'
-  map.visitor_accept_disclaimer 'visitor/:id/accept_disclaimer', :controller => 'visitors', :action => 'accept_disclaimer'
+  map.visitor_disclaimer 'disclaimer', :controller => 'visitors', :action => 'disclaimer'
+  map.visitor_accept_disclaimer 'accept_disclaimer', :controller => 'visitors', :action => 'accept_disclaimer'
   
   map.logout  'logout', :controller => 'application', :action => 'logout'
   map.connect 'logout', :controller => 'application', :action => 'logout'
   
   map.about   'about', :controller => 'application', :action => 'about'
   map.connect 'about', :controller => 'application', :action => 'about'
+
+  map.contactus 'contactus', :controller => 'application', :action => 'contact_us'
+  map.connect   'contactus', :controller => 'application', :action => 'contact_us'
 end

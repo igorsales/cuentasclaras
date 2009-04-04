@@ -19,41 +19,24 @@ class ApplicationController < ActionController::Base
   
   def visitor
     # Find the visitor from the session id
-    if not session[:visitor_id].nil?
-	  @visitor = Visitor.find(session[:visitor_id])
-	  if @visitor.nil?
-	    @visitor = Visitor.new
-	    @visitor.save
-  	    session[:visitor_id] = @visitor.id
-	  end
+    if session[:visitor_id]
+	  visitor = Visitor.find(session[:visitor_id])
     else
       # Well, no session, so did we store a proper visitor cookie?
-      if cookies[:visitor_permalink].nil?
-        create_new_visitor = true
-      else
-        @visitor = Visitor.find(:first, :conditions => { :permalink => cookies[:visitor_permalink] } )
-        if( @visitor.nil? )
-          create_new_visitor = true
-        else
-          create_new_visitor = false
-          session[:visitor_id] = @visitor.id
+      if cookies[:visitor_permalink]
+        visitor = Visitor.find(:first, :conditions => { :permalink => cookies[:visitor_permalink] } )
+        if visitor
+          session[:visitor_id] = visitor.id
         end
-      end
-      
-      if create_new_visitor
-  	    @visitor = Visitor.new
-	    @visitor.save
-	    session[:visitor_id] = @visitor.id
-        cookies[:visitor_permalink] = { :value => @visitor.permalink, :expires => 1.year.from_now }
-      end
+      end      
 	end
 	
-	@visitor
+	visitor
   end
   
   def set_user_language
     @visitor = visitor
-    if @visitor.locale.nil?
+    if @visitor.nil? or @visitor.locale.nil?
       host = request.host
       if /\.(ar|es)$/.match(host) or /cuentasclaras\./.match(host)
         I18n.locale = 'es'
@@ -87,16 +70,17 @@ class ApplicationController < ActionController::Base
   end
   
   def check_disclaimer_accept
-    @visitor = visitor
-    if params[:controller] != 'visitors' and params[:action] != 'disclaimer' and
-       !@visitor.accept_disclaimer
+    if params[:controller] != 'visitors' and params[:action] != 'disclaimer'
+      @visitor = visitor
+      
+      if @visitor.nil? or not @visitor.accept_disclaimer
+        session[:user_was_going_to] = request.request_uri
+        if session[:user_was_going_to] == visitor_disclaimer_url
+          session[:user_was_going_to] = bills_url
+        end
 
-      session[:user_was_going_to] = request.request_uri
-      if session[:user_was_going_to] == visitor_disclaimer_url(@visitor)
-        session[:user_was_going_to] = bills_url
+        redirect_to visitor_disclaimer_url
       end
-
-      redirect_to visitor_disclaimer_url(@visitor)
     end
   end
   
@@ -111,6 +95,12 @@ class ApplicationController < ActionController::Base
   end
   
   def about
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def contact_us
     respond_to do |format|
       format.html
     end

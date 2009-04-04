@@ -15,7 +15,11 @@ class VisitorsController < ApplicationController
   
   def set_locale
     @visitor = visitor
-    @visitor.update_attributes(params[:visitor])
+    if @visitor
+      @visitor.update_attributes(params[:visitor])
+    else
+      I18n.locale = params[:visitor][:locale]
+    end
     
     respond_to do |format|
       format.html { redirect_to :back }
@@ -24,8 +28,6 @@ class VisitorsController < ApplicationController
   end
   
   def disclaimer
-    @visitor = visitor
-    
     @disclaimer = File.read( "#{RAILS_ROOT}/public/disclaimer/disclaimer.#{I18n.locale}.txt" )
 
     respond_to do |format|
@@ -34,19 +36,19 @@ class VisitorsController < ApplicationController
   end
   
   def accept_disclaimer
-    if visitor.update_attributes(:accept_disclaimer => true)
-    
-      if session[:user_was_going_to].nil?
-        session[:user_was_going_to] = bills_url
-      end
+    if session[:visitor_id].nil?
+      @visitor = Visitor.new
+      @visitor.update_attributes(:accept_disclaimer => true)
+      @visitor.save
+      session[:visitor_id] = @visitor.id
+    end
 
-      respond_to do |format|
-        format.html { redirect_to session[:user_was_going_to]; session[:user_was_going_to] = nil }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to visitor_disclaimer_url(visitor) }
-      end
+    if session[:user_was_going_to].nil?
+      session[:user_was_going_to] = bills_url
+    end
+
+    respond_to do |format|
+      format.html { redirect_to session[:user_was_going_to]; session[:user_was_going_to] = nil }
     end
   end
 end

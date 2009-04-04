@@ -3,7 +3,7 @@
 <% end %>
 
 <h2><%= t 'title.terms_and_conditions' %></h2>
-<% form_for :visitor, :url => visitor_accept_disclaimer_url(@visitor) do |f| %>
+<% form_for :visitor, :url => visitor_accept_disclaimer_url do |f| %>
   <%= text_area_tag :disclaimer, @disclaimer, { :size => '64x10', :disabled => true } %>
   <br/>
   <%= f.submit t('action.accept') %>

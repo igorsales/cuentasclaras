@@ -52,11 +52,13 @@ en:
     update: "Update"
     accept: "Accept"
     logout: "Log out"
+    contact_us: "Contact us"
 
     read_disclaimer: "Read disclaimer"
 
   page:
     about: "About this site"
+    want_to_donate: "If you found this site useful and would like to donate..."
     
   msg:
     bill_participant_update_ok: "Bill participant was successfully updated."
