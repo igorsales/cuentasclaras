@@ -83,22 +83,33 @@ class Bill < ActiveRecord::Base
 	end
 	
 	# Simplify matrix
-	@sorted_bill_participants.each do |a|
+    @sorted_bill_participants.each do |a|
 	  @sorted_bill_participants.each do |b|
 	    @sorted_bill_participants.each do |c|
-		  # If A owes B, B owes C, and A owes C, then 
-		  if matrix[ a.id ][ b.id ] > 0 and matrix[ b.id ][ c.id ] > 0 and matrix[ a.id ][ c.id ] > 0
-	
-		    # Calculate the minimum between the three, and transfer it.	  
-			diff = [ matrix[ a.id ][ b.id ], matrix[ a.id ][ c.id ], matrix[ b.id ][ c.id ] ].min
-			
-			matrix[ a.id ][ b.id ] -= diff
-			matrix[ b.id ][ c.id ] -= diff
-			matrix[ a.id ][ c.id ] += diff
-		  end
+	      # If A owes B, B owes C, and A owes C or C owes A, then 
+		  # Calculate the minimum between the three, and transfer it.	  
+
+          # a->b, b->c
+		  if matrix[ a.id ][ b.id ] > 0 and matrix[ b.id ][ c.id ] > 0
+
+            # a->c
+            if matrix[ a.id ][ c.id ] > 0
+		      diff = [ matrix[ a.id ][ b.id ], matrix[ b.id ][ c.id ], matrix[ a.id ][ c.id ] ].min
+		      matrix[ a.id ][ b.id ] -= diff
+		      matrix[ b.id ][ c.id ] -= diff
+		      matrix[ a.id ][ c.id ] += diff
+
+            # c->a
+		    elsif matrix[ c.id ][ a.id ] > 0
+		      diff = [ matrix[ a.id ][ b.id ], matrix[ b.id ][ c.id ], matrix[ c.id ][ a.id ] ].min
+		      matrix[ a.id ][ b.id ] -= diff
+		      matrix[ b.id ][ c.id ] -= diff
+		      matrix[ c.id ][ a.id ] -= diff
+            end
+	      end
 	    end
 	  end
-	end
+    end
 	
 	matrix
   end
