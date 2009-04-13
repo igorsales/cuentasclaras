@@ -25,6 +25,7 @@ class BillParticipantsController < ApplicationController
   def destroy
     @bill_participant = BillParticipant.find(params[:id])
 	@bill = @bill_participant.bill
+    @bill_participant.bill_payments.each { |p| p.destroy }
 	@bill_participant.destroy
 
     respond_to do |format|
