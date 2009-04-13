@@ -41,3 +41,10 @@
 #disclaimer_link a:hover, #disclaimer_link a:active {
   color: #927f61;
 }
+
+.empty_table {
+  text-align: center;
+  font-style: italic;
+  background-color: #ffffd0;
+  color: #7f7f7f;
+}

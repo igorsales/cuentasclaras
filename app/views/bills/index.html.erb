@@ -20,6 +20,11 @@
 	</tr>
   </thead>
 <tbody>
+  <% if @bills.empty? %>
+    <tr>
+      <td colspan="3" class="empty_table"><%= t('msg.bill_no_bills') %></td>
+    </tr>
+  <% end %>
   <% for bill in @bills %>
     <tr class="<%= cycle('odd','even') %>">
       <td><%= link_to bill.name, bill_bill_items_url(bill) %></td>

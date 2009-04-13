@@ -18,6 +18,9 @@
     <tr>
 	  <th class="bill_item_th_text" rowspan="2"><%= t 'table_hdr.date' %></th>
 	  <th class="bill_item_th_text" rowspan="2"><%= t 'table_hdr.descr' %></th>
+      <% if @bill_participants.empty? %>
+        <td class="empty_table" rowspan="2"><%= t('msg.bill_no_participants') %></td>
+      <% end %>
 	  <% @bill_participants.each do |participant| %>
 	    <th class="bill_item_th_toolbar">
 		  <%= link_to edit_image_tag, edit_bill_bill_participant_url(@bill, participant) %>
@@ -40,6 +43,11 @@
 	</tr>
   </thead>
   <tbody>
+    <% if @bill_items.empty? %>
+      <tr>
+        <td class="empty_table" colspan="<%= 3+[1,@bill_participants.size].max %>"><%= t('msg.bill_no_items') %></td>
+      </tr>
+    <% end %>
 	<% for item in @bill_items do %>
 	  <tr class="<%= cycle('odd','even') %>">
         <td>
@@ -52,6 +60,9 @@
             <%= f.text_field :name, :size => 15, :onblur => 'this.form.onsubmit();' %>
 		  <% end %>
         </td>
+        <% if @bill_participants.empty? %>
+          <td></td>
+        <% end %>
 	    <% for participant in @bill_participants do %>
           <td class="bill_payment_value_cell">
 		    <% form_remote_tag :url => bill_payment_url(item.id, participant.id), :html => { :id => bill_item_payment_id(item,participant) } do %>
@@ -68,7 +79,7 @@
 	  </tr>
 	<% end %>
 	<tr class="<%= cycle('odd','even') %>">
-	  <td colspan="<%= 3+@bill_participants.size %>">
+	  <td colspan="<%= 3+[1,@bill_participants.size].max %>">
 	    <%= link_to add_image_tag + t('action.add_bill_item'), new_bill_bill_item_url(@bill) %>
 	  </td>
 	</tr>

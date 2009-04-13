@@ -39,6 +39,7 @@ pt-BR:
     total: "Total"
     party_size: "Número de participantes"
     exempt: "Isento?"
+    bill_template: "Começar com"
 
   action:
     add_bill: "Adicionar nova conta"
@@ -66,6 +67,10 @@ pt-BR:
     bill_update_ok: "Dados da conta atualizada com successo."
     bill_permalink_not_found: "Permalink de conta inválido."
     bill_add_to_visitor_ok: "Conta adicionada a sua lista com successo."
+    bill_no_bills: "Nenhuma conta cadastrada."
+    bill_no_participants: "Nenhum participante."
+    bill_no_items: "Nenhuma despesa."
+    bill_no_settle: "Nada a dividir."
     visitor_permalink_not_found: "Permalink de usuário não encontrado."
 
   breadcrumb:

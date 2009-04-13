@@ -11,6 +11,14 @@
 	</tr>
   </thead>
   <tbody>
+    <% if @bill_participants.empty? %>
+      <tr>
+        <td class="empty_table">
+          <%= t('msg.bill_no_participants') %><br/>
+          <%= t('msg.bill_no_settle') %><br/>
+        </td>
+      </tr>
+    <% end %>
     <% @bill_participants.each do |p| %>
 	  <tr class="<%= cycle('odd','even') %>">
 	    <th><%=h p.name %> <%=h conjugate('owe',p.party_size) %></th>

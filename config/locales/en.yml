@@ -39,6 +39,7 @@ en:
     total: "Total"
     party_size: "Party size"
     exempt: "Exempt?"
+    bill_template: "Start with"
 
   action:
     add_bill: "Add new bill"
@@ -66,6 +67,10 @@ en:
     bill_update_ok: "Bill updated successfully."
     bill_permalink_not_found: "Cannot find bill from permalink."
     bill_add_to_visitor_ok: "Succesfully added bill to your bills."
+    bill_no_bills: "You have no bills."
+    bill_no_participants: "No participants."
+    bill_no_items: "No expenses."
+    bill_no_settle: "Nothing to settle."
     visitor_permalink_not_found: "Cannot find permalink."
 
   breadcrumb:
