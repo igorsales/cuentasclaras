@@ -1,6 +1,6 @@
 en:
   welcome:
-    paragraph: "Hello, and welcome to CuentasClaras.com.
+    paragraph: "Hello, and welcome to ExpensePad.com.
 	            Start by clicking on 'Add new bill' below to add bills. 
 				Click on a bill to add participants, items and payments."
   help:
@@ -24,7 +24,7 @@ en:
                         or click outside the cell."
 
   title:
-    site: "Good Fences Make Good Neighbors"
+    site: "Expense Pad"
     bills: "Bills"
     bill_items: "Expenses"
     who_owes_what: "Who owes what?"
