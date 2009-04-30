@@ -1,0 +1,63 @@
+<% content_for :subtitle do %><%= t 'page.tutorial' %><% end %>
+
+<% content_for :help_sidebar do %>
+<% end %>
+
+<h1>The premise</h1>
+You and your friends went camping this summer.
+<ul>
+  <li>Alice and Bob bought groceries for $123.75</li>
+  <li>Jack and Jill got the camp ground for $86.34</li>
+  <li>Tom bought firewood for $15.00</li>
+  <li>The twins Lisa & Maggie paid for the canoe rentals: $74.88</li>
+  <li>You brought some birthday cake ($23.99) to celebrate the twins birthday</li>
+</ul> 
+<p>How do you split these expenses easily?</p>
+
+<h1>1. Create a bill</h1>
+
+<ul>
+  <li>Click on my bills, on the top-right menu.<br/><%= tut_image_tag(0) %></li>
+  <li>Click on "Add new bill"<br/><%= tut_image_tag(1) %></li>
+  <li>Enter "Camping Trip" as the name and "Summer - Twins birthday" for Description<br/><%= tut_image_tag(2) %></li>
+  <li>Click on the Create button. The bill is created and empty (no participants, no expenses, no payments), as seen below.<br/><%= tut_image_tag(3) %></li>
+</ul>
+
+<h1>2. Add participants</h1>
+
+<ul>
+  <li>Click on <%= add_image_tag %> to add a participant.<br/><%= tut_image_tag(4) %></li>
+  <li>Enter "Me" or your own name, and "1" for party size.<br/><%= tut_image_tag(5) %></li>
+  <li>Click on the "Create" button to add the participant to the bill.<br/><%= tut_image_tag(6) %></li>
+  <li>Repeat for every person or couple or group in the trip.<br/><%= tut_image_tag(7) %><br/></li>
+  <li>The bill now has all participants in it. You're read to add expenses and payments.<%= tut_image_tag(10) %></li>
+</ul>
+
+<h1>3. Enter the expenses</h1>
+
+<ul>
+  <li>Click on "New expense".<br/><%= tut_image_tag(11) %></li>
+  <li>Enter "Groceries" in the Description field.<br/><%= tut_image_tag(12) %></li>
+  <li>Enter "123.75" in the column for "Alice & Bob".<br/><%= tut_image_tag(13) %></li>
+  <li>Repeat for all other expenses.<br/><%= tut_image_tag(14) %></li>
+  <li>Click on the exempt box for "Lisa & Maggie" (they shouldn't pay for their own birthday cake!).<br/><%= tut_image_tag(15) %></li>
+</ul>
+
+<h1>The results</h1>
+
+<p>Check the results on the "Who owes what?" table to see who owes who!</p>
+<p>Expense Pad automatically minimizes the amount of money exchanged between participants!</p>
+<%= tut_image_tag(16) %>
+<p>You can see that "Me" and "Tom" will pay everybody else, since they contributed the least.</p>
+
+<h1>More features</h1>
+
+<ul>
+  <li>Every participant can participate in different expenses with different amounts.</li>
+  <li>Enter an amount in a cell, and click outside the cell, or another cell, to have the 
+      "Who owes what?" table update automatically.</li>
+  <li>Re-order expenses by changing their date using the date picker.</li>
+  <li>Look at totals of how much each participant has spent.</li>
+  <li>Share your bills with others by sending them permalink (the link on the 
+      <%= link_image_tag %> icon).</li>
+</ul>

@@ -1,0 +1,12 @@
+This site suggests how expenses should be divided. We (the site 
+owners/makers/employees) are not responsible if you (the user 
+and your friends and family) win or lose money.
+
+ExpensePad.com comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+By clicking "Accept" you are acknowledging you accept the terms
+and conditions of this software.
+
+If you don't wish to accept these terms and conditions, please
+close the browser window.

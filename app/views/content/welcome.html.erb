@@ -1,0 +1,47 @@
+<%= javascript_include_tag "scriptaculous" %>
+
+<center>
+<h1><%= t('welcome.h1') %></h1>
+<h2><%= t('welcome.h2') %></h2>
+<p/>
+<div style="width: 550px; height:380px;">
+  <div id="step1" style="position: absolute; width: 550px; height: 363px; left: 15px; top: 205px; z-index: 3; background: #ffffff;">
+    <h2><%= t('welcome.step1') %></h2>
+    <%= welcome_image_tag(1) %>
+  </div>
+  <div id="step2"  style="position: absolute; width: 550px; height: 363px; left: 15px; top: 205px; z-index: 2; background: #ffffff;">
+    <h2><%= t('welcome.step2') %></h2>
+    <%= welcome_image_tag(2) %>
+  </div>
+  <div id="step3"  style="position: absolute; width: 550px; height: 363px; left: 15px; top: 205px; z-index: 1; background: #ffffff;">
+    <h2><%= t('welcome.step3') %></h2>
+    <%= welcome_image_tag(3) %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  sm = [ { fade: 'step1', appear: 'step2', delay:  5000 },
+         { fade: 'step2', appear: 'step3', delay:  7500 },
+         { fade: 'step3', appear: 'step1', delay:  5000 }
+       ];
+       
+  function step_animation(i) {
+    new Effect.Fade( sm[i].fade );
+    new Effect.Appear( sm[i].appear );
+    
+    setTimeout("step_animation("+((i+1)%sm.length)+")", sm[i].delay);
+  }
+  
+  Event.observe(window, 'load', function() {
+    setTimeout("step_animation(0)",5000);
+  });
+</script>
+
+</center>
+
+<% if visitor.nil? or !visitor.accept_disclaimer %>
+  <br/>
+  <%= t('welcome.get_started') %><br/><br/>
+
+  <%= render :partial => "content/disclaimer" %>
+<% end %>

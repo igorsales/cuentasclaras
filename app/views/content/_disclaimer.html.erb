@@ -1,0 +1,10 @@
+<h2><%= t 'title.terms_and_conditions' %></h2>
+<% form_for :visitor, :url => visitor_accept_disclaimer_url do |f| %>
+
+  <textarea name="disclaimer" id="disclaimer" cols="64" rows="10"><%= render :partial => "content/#{I18n.locale}/disclaimer.txt" %></textarea>
+
+  <br/>
+  <% if visitor.nil? or !visitor.accept_disclaimer %>
+    <%= f.submit t('action.accept') %>
+  <% end %>
+<% end %>
