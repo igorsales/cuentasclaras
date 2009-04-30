@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   before_filter :set_user_language
-  before_filter :check_disclaimer_accept
+  #before_filter :check_disclaimer_accept
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -37,16 +37,38 @@ class ApplicationController < ActionController::Base
   def set_user_language
     @visitor = visitor
     if @visitor.nil? or @visitor.locale.nil?
-      host = request.host
-      if /\.(ar|es)$/.match(host) or /cuentasclaras\./.match(host)
-        I18n.locale = 'es'
-      elsif /\.(br)$/.match(host) or /contasclaras\./.match(host)
-        I18n.locale = 'pt-BR'
+      if session[:locale].nil?
+        host = request.host
+        if /\.(ar|es)$/.match(host) or /cuentasclaras\./.match(host)
+          I18n.locale = 'es'
+        elsif /\.(br)$/.match(host) or /contasclaras\./.match(host)
+          I18n.locale = 'pt-BR'
+        else
+          I18n.locale = 'en'
+        end
       else
-        I18n.locale = 'en'
+        I18n.locale = session[:locale]
       end
     else
       I18n.locale = @visitor.locale
+    end
+  end
+
+  def set_locale
+    if /(pt-BR|e([ns]))/.match(params[:visitor][:locale])
+      @visitor = visitor
+      if @visitor
+        @visitor.update_attributes(params[:visitor])
+        session[:locale] = nil
+      else
+        session[:locale] = params[:visitor][:locale]
+        I18n.locale = session[:locale]
+      end
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.xml  { head :ok }
     end
   end
   
@@ -79,6 +101,7 @@ class ApplicationController < ActionController::Base
           session[:user_was_going_to] = bills_url
         end
 
+        flash[:notice] = t('msg.accept_disclaimer')
         redirect_to visitor_disclaimer_url
       end
     end
@@ -91,18 +114,6 @@ class ApplicationController < ActionController::Base
     
     respond_to do |format|
       format.html { redirect_to 'http://www.google.com' }
-    end
-  end
-  
-  def about
-    respond_to do |format|
-      format.html
-    end
-  end
-
-  def contact_us
-    respond_to do |format|
-      format.html
     end
   end
 end

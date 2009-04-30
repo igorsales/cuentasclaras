@@ -31,7 +31,10 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "bills"
+  map.root :controller => 'content', :action => 'welcome'
+
+#  map.welcome 'welcome', :controller => 'content', :action => 'welcome'
+  map.connect 'welcome', :controller => 'content', :action => 'welcome'
 
   # See how all your routes lay out with "rake routes"
 
@@ -55,7 +58,7 @@ ActionController::Routing::Routes.draw do |map|
   map.visitor_permalink 'visitor/:permalink', :controller => 'visitors', :action => 'visitor_permalink'
   map.connect           'visitor/:permalink.:format', :controller => 'visitors', :action => 'visitor_permalink', :format => nil
   
-  map.locale  'set_locale', :controller => 'visitors', :action => 'set_locale'
+  map.locale  'set_locale', :controller => 'application', :action => 'set_locale'
   
   map.visitor_disclaimer 'disclaimer', :controller => 'visitors', :action => 'disclaimer'
   map.visitor_accept_disclaimer 'accept_disclaimer', :controller => 'visitors', :action => 'accept_disclaimer'
@@ -63,9 +66,5 @@ ActionController::Routing::Routes.draw do |map|
   map.logout  'logout', :controller => 'application', :action => 'logout'
   map.connect 'logout', :controller => 'application', :action => 'logout'
   
-  map.about   'about', :controller => 'application', :action => 'about'
-  map.connect 'about', :controller => 'application', :action => 'about'
-
-  map.contactus 'contactus', :controller => 'application', :action => 'contact_us'
-  map.connect   'contactus', :controller => 'application', :action => 'contact_us'
+  map.connect '*path', :controller => 'content', :action => 'show'
 end

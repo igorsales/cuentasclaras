@@ -3,6 +3,13 @@ en:
     paragraph: "Hello, and welcome to ExpensePad.com.
 	            Start by clicking on 'Add new bill' below to add bills. 
 				Click on a bill to add participants, items and payments."
+    h1: "Welcome to ExpensePad.com!"
+    h2: "Settle group expenses in 3 easy steps:"
+    step1: "1. Create a bill, and add your friends"
+    step2: "2. Add your expenses, and who paid for what"
+    step3: "3. Check out the results!"
+    get_started: "Get started by acknowledging the disclaimer below:"
+
   help:
     title: "Need help?"
     add_bill: "Click on the {{image}} icon to add a new bill."
@@ -53,15 +60,17 @@ en:
     update: "Update"
     accept: "Accept"
     logout: "Log out"
-    contact_us: "Contact us"
 
     read_disclaimer: "Read disclaimer"
 
   page:
+    contact_us: "Get in touch with us!"
+    tutorial: "How do I use this service?"
     about: "About this site"
     want_to_donate: "If you found this site useful and would like to donate..."
     
   msg:
+    accept_disclaimer: "Please read and accept disclaimer first."
     bill_participant_update_ok: "Bill participant was successfully updated."
     bill_add_failed: "Error creating Bill."
     bill_update_ok: "Bill updated successfully."

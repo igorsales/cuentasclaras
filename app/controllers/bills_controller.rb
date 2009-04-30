@@ -1,4 +1,6 @@
 class BillsController < ApplicationController
+  before_filter :check_disclaimer_accept
+
   def index
     # First time this visitor shows up
     @bills = visitor.bills

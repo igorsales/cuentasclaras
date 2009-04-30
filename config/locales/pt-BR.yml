@@ -1,8 +1,15 @@
 pt-BR:
   welcome:
-    paragraph: "Bem-vindo a ContasClaras.com.
+    paragraph: "Bem-vindo a ExpensePad.com.
 	            Adicione uma nova conta clicando no link 'Adicionar nova conta' abaixo. 
 				Clique em uma conta para adicionar participantes, despesas e pagamentos."
+    h1: "Bem-vindos ao ExpensePad.com!"
+    h2: "Divida as despesas da turma em 3 simples passos:"
+    step1: "1. Crie uma conta, e adicione seus amigos."
+    step2: "2. Adicione suas despesas, e quem pagou o que."
+    step3: "3. Olhe os resultados!"
+    get_started: "Por favor aceite as condições de uso abaixo antes de prosseguir:"
+
   help:
     title: "Ajuda?"
     add_bill: "Clique no ícone {{image}} para adicionar uma nova fatura."
@@ -24,7 +31,7 @@ pt-BR:
                         o valor editado será armazenado."
 
   title:
-    site: "Contas Claras"
+    site: "Expense Pad/Contas Claras"
     bills: "Contas"
     bill_items: "Despesas"
     who_owes_what: "Quem deve o que a quem?"
@@ -53,15 +60,17 @@ pt-BR:
     update: "Atualizar"
     accept: "Aceitar"
     logout: "Sair"
-    contact_us: "Entre em contato"
 
     read_disclaimer: "Ler Isenção de Responsabilidade"
     
   page:
+    contact_us: "Entre em contato conosco"
+    tutorial: "Como se usa este serviço?"
     about: "Sobre este site"
     want_to_donate: "Se gostou deste site e gostaria de fazer uma doação..."
 
   msg:
+    accept_disclaimer: "Por favor leia a isenção de responsabilidade e aceita-a antes de prosseguir."
     bill_participant_update_ok: "Participante atualizado com sucesso."
     bill_add_failed: "Erro ao criar nova conta."
     bill_update_ok: "Dados da conta atualizada com successo."

@@ -1,4 +1,6 @@
 class VisitorsController < ApplicationController
+  before_filter :check_disclaimer_accept, :except => 'set_locale'
+
   def visitor_permalink
     @visitor = Visitor.find(:first, :conditions => { :permalink => params[:permalink] } )
 	
@@ -12,23 +14,10 @@ class VisitorsController < ApplicationController
 	  format.xml  { }
 	end
   end
-  
-  def set_locale
-    @visitor = visitor
-    if @visitor
-      @visitor.update_attributes(params[:visitor])
-    else
-      I18n.locale = params[:visitor][:locale]
-    end
-    
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.xml  { head :ok }
-    end
-  end
-  
+
   def disclaimer
-    @disclaimer = File.read( "#{RAILS_ROOT}/public/disclaimer/disclaimer.#{I18n.locale}.txt" )
+    # TODO: Fix this into content
+    #@disclaimer = File.read( "#{RAILS_ROOT}/public/disclaimer/disclaimer.#{I18n.locale}.txt" )
 
     respond_to do |format|
       format.html

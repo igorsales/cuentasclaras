@@ -1,4 +1,6 @@
 class BillPaymentsController < ApplicationController
+  before_filter :check_disclaimer_accept
+
   def update
     @bill_item = BillItem.find(params[:bill_item_id])
 	@bill_participant = BillParticipant.find(params[:bill_participant_id])

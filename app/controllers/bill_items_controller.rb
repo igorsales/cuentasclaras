@@ -1,4 +1,6 @@
 class BillItemsController < ApplicationController
+  before_filter :check_disclaimer_accept
+  
   def index
     @bill = Bill.find(params[:bill_id])
 	@bill_items = @bill.bill_items.find(:all, :order => :date)

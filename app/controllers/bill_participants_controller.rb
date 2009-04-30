@@ -1,4 +1,6 @@
 class BillParticipantsController < ApplicationController
+  before_filter :check_disclaimer_accept
+
   def new
     @bill = Bill.find(params[:bill_id])
     @bill_participant = BillParticipant.new

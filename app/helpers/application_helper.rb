@@ -16,15 +16,25 @@ module ApplicationHelper
     image_tag('link.png')
   end
   
-  def visitor
-    Visitor.find(session[:visitor_id])
+  def tut_image_tag(number)
+    image_tag( I18n.locale + '/tut/tut' + number.to_s + '.png' )
   end
 
+  def welcome_image_tag(number)
+    image_tag( I18n.locale + '/welcome' + number.to_s + '.png' )
+  end
+
+  def visitor
+    if session[:visitor_id]
+      Visitor.find(session[:visitor_id])
+    end
+  end
+  
   def locales_array
     [ 
       ['English',             'en'],
       ['Português do Brasil', 'pt-BR'], 
-      ['Español',             'es']
+#      ['Español',             'es']
     ]
 
   end
