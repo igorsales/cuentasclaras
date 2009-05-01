@@ -50,7 +50,7 @@ class Bill < ActiveRecord::Base
           bill_participants.each do |payer|
             if payer != payee and not exempt.include?(payer)
               # Payer owes payee
-              matrix[ payer.id ][ payee.id ] += per_payer
+              matrix[ payer.id ][ payee.id ] += per_payer * payer.party_size
             end
           end
         end
