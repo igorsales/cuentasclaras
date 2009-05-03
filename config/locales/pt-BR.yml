@@ -40,6 +40,7 @@ pt-BR:
 
   table_hdr:
     name: "Nome"
+    bill_name: "Nome da conta"
     descr: "Descrição"
     actions: "Acões"
     date: "Data"

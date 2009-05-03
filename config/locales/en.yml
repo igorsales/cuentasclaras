@@ -1,11 +1,11 @@
 en:
   welcome:
     paragraph: "Hello, and welcome to ExpensePad.com.
-	            Start by clicking on 'Add new bill' below to add bills. 
+	            Start by clicking on 'Add new bill' to add a bill. 
 				Click on a bill to add participants, items and payments."
     h1: "Welcome to ExpensePad.com!"
     h2: "Settle group expenses in 3 easy steps:"
-    step1: "1. Create a bill, and add your friends"
+    step1: "1. Add a bill, and add your friends"
     step2: "2. Add your expenses, and who paid for what"
     step3: "3. Check out the results!"
     get_started: "Get started by acknowledging the disclaimer below:"
@@ -13,21 +13,21 @@ en:
   help:
     title: "Need help?"
     add_bill: "Click on the {{image}} icon to add a new bill."
-    edit_bill: "Click on the {{image}} icon to edit a Bill's name and Description."
-    delete_bill: "Click on the {{image}} icon to delete a Bill."
+    edit_bill: "Click on the {{image}} icon to edit a bill's name and Description."
+    delete_bill: "Click on the {{image}} icon to delete a bill."
     visitor_permalink: "Copy the link in the {{image}} icon to distribute amongst friends."
 
-    add_bill_item: "Add expenses by clicking the {{image}} located at the bottom of the expenses table."
-    add_bill_participant: "Add participants to the expense table by clicking the {{image}} icon located at the 
-                           top-right corner of the expense table."
+    add_bill_item: "Add expenses by clicking the {{image}} icon located at the bottom of the expenses table."
+    add_bill_participant: "Add participants to the expense table by clicking the {{image}} icon located to the 
+                           right of the participants."
     delete_bill_item: "Remove expenses by clicking the {{image}} icon located to the right of the expense row."
-    edit_bill_participant: "Edit the participant's name or the participant's party size by clicking the {{image}} icon 
+    edit_bill_participant: "Edit the participant's name or the participant(s) party size by clicking the {{image}} icon 
                             above the participant's name."
-    delete_bill_participant: "Remove a participant by clicking the {{image}} above the participant's name."
+    delete_bill_participant: "Remove a participant by clicking the {{image}} icon above the participant(s) name(s)."
     edit_bill_properties: "Edit bill's properties by clicking the {{image}} icon on the top-right corner of the expenses
                            table."
     edit_bill_payment: "Add, remove and edit expense values, date and values by changing the contents of the cells.
-                        The values are applied when you press the 'enter' key, press the 'tab' key,
+                        The values are saved when you press the 'Enter' key, press the 'Tab' key,
                         or click outside the cell."
 
   title:
@@ -40,6 +40,7 @@ en:
 
   table_hdr:
     name: "Name"
+    bill_name: "Bill name"
     descr: "Description"
     actions: "Actions"
     date: "Date"
@@ -72,7 +73,7 @@ en:
   msg:
     accept_disclaimer: "Please read and accept disclaimer first."
     bill_participant_update_ok: "Bill participant was successfully updated."
-    bill_add_failed: "Error creating Bill."
+    bill_add_failed: "Error creating bill."
     bill_update_ok: "Bill updated successfully."
     bill_permalink_not_found: "Cannot find bill from permalink."
     bill_add_to_visitor_ok: "Succesfully added bill to your bills."

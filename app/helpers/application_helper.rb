@@ -34,7 +34,7 @@ module ApplicationHelper
     [ 
       ['English',             'en'],
       ['Português do Brasil', 'pt-BR'], 
-#      ['Español',             'es']
+      ['Español',             'es']
     ]
 
   end
