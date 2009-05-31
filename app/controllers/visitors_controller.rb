@@ -16,9 +16,6 @@ class VisitorsController < ApplicationController
   end
 
   def disclaimer
-    # TODO: Fix this into content
-    #@disclaimer = File.read( "#{RAILS_ROOT}/public/disclaimer/disclaimer.#{I18n.locale}.txt" )
-
     respond_to do |format|
       format.html
     end
@@ -30,6 +27,7 @@ class VisitorsController < ApplicationController
       @visitor.update_attributes(:accept_disclaimer => true)
       @visitor.save
       session[:visitor_id] = @visitor.id
+      cookies[:visitor_permalink] = { :value => @visitor.permalink, :expires => 10.years.from_now }
     end
 
     if session[:user_was_going_to].nil?
